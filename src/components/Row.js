@@ -1,13 +1,19 @@
 import React from 'react';
-
+import { motion } from 'framer-motion';
 export default function ({ solutionLength, guess, currentGuess, solution }) {
   if (guess) {
     return (
       <div className='row past'>
         {guess.map((letter, index) => (
-          <div key={index} className={letter.color}>
+          <motion.div
+            key={index}
+            className={letter.color}
+            animate={{ rotate: 360 }}
+            transition={{ delay :0.2,duration: 0.8 }}
+            
+          >
             {letter.key}
-          </div>
+          </motion.div>
         ))}
       </div>
     );
@@ -32,7 +38,7 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
   return (
     <div className='row'>
       {[...Array(solutionLength)].map((index) => (
-        <div key={index}></div>
+        <div key={index} сlassName='lox' />
       ))}
     </div>
   );

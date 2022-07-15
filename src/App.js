@@ -23,7 +23,7 @@ function App({ guesses }) {
   // };
 
   const handleGenerateNext = () => {
-    fetch(' http://localhost:3001/questions1')
+    fetch('http://localhost:3001/questions1')
       .then((res) => res.json())
       .then((questions1) => {
         const randomSolution =
@@ -34,7 +34,7 @@ function App({ guesses }) {
       });
   };
   useEffect(() => {
-    fetch(' http://localhost:3001/questions1')
+    fetch('http://localhost:3001/questions1')
       .then((res) => res.json())
       .then((questions1) => {
         const randomSolution =
@@ -60,7 +60,7 @@ function App({ guesses }) {
         <img className='icon' src={icon}></img>
       </div>
       <div className='low' >
-        <button type='button' onClick={() => window.location.reload(false)}>next</button>
+        <button type='button' onClick={handleGenerateNext}>next</button>
       </div>
       <div id='lol'></div>
 
