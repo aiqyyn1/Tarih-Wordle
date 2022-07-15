@@ -54,3 +54,16 @@ body {
 .yellow {
   background-color: yellow;
 }
+#next {
+  display: flex;
+  justify-content: flex-end;
+}
+#lol {
+  display: flex;
+  flex-direction: column;
+}
+.low {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

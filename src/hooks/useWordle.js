@@ -53,16 +53,17 @@ const useWordle = (solution) => {
   const handleKeyUp = ({ key }) => {
     if (key === 'Enter') {
       if (turn > 5) {
-        console.log('you used all your guesses');
+        alert('болды брат попыткаларын бытты ');
         return;
       }
       if (history.includes(currentGuess)) {
-        console.log('you already tried that word');
+        alert('брат жаздын го уже ондай созды');
         return;
       }
 
       if (currentGuess.length !== solution.length) {
-        console.log('word must be solution.length chars long');
+        alert('бля брат дурыстап жазсай');
+        return;
       }
       const format = formatGuess();
       addNewGuess(format);

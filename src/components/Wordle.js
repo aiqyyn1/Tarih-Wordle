@@ -24,6 +24,7 @@ export default function Wordle({ solution, questions }) {
         currentGuess={currentGuess}
         guesses={guesses}
         solutionLength={solution.length}
+        turn={turn}
       />
     </div>
   );

@@ -7,7 +7,7 @@ import setting from './foto/setting.jpeg';
 import axios from 'axios';
 import lol from './json1/lol.json';
 
-function App() {
+function App({ guesses }) {
   const [solution, setSolution] = useState(null);
   const [questions, setQuestions] = useState(null);
 
@@ -22,8 +22,19 @@ function App() {
   //   );
   // };
 
+  const handleGenerateNext = () => {
+    fetch(' http://localhost:3001/questions1')
+      .then((res) => res.json())
+      .then((questions1) => {
+        const randomSolution =
+          questions1[Math.floor(Math.random() * questions1.length)];
+
+        setSolution(randomSolution.answer);
+        setQuestions(randomSolution.questions);
+      });
+  };
   useEffect(() => {
-    fetch('http://localhost:3001/questions1')
+    fetch(' http://localhost:3001/questions1')
       .then((res) => res.json())
       .then((questions1) => {
         const randomSolution =
@@ -41,11 +52,15 @@ function App() {
           src={setting}
           alt='my image'
           className='buttonImage'
+
           // onClick={() => setShow((prev) => !prev)}
         />
 
         <h1 className='title '>Tarih's game</h1>
         <img className='icon' src={icon}></img>
+      </div>
+      <div className='low' >
+        <button type='button' onClick={() => window.location.reload(false)}>next</button>
       </div>
       <div id='lol'></div>
 

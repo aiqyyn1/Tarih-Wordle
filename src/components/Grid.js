@@ -6,6 +6,15 @@ export default function Grid({ currentGuess, guesses, turn, solutionLength }) {
   return (
     <div>
       {guesses.map((guess, i) => {
+        if (turn === i) {
+          return (
+            <Row
+              key={i}
+              currentGuess={currentGuess}
+              solutionLength={solutionLength}
+            ></Row>
+          );
+        }
         return <Row key={i} solutionLength={solutionLength} guess={guess} />;
       })}
     </div>
