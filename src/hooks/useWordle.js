@@ -1,8 +1,6 @@
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import Wordle from '../components/Wordle';
 import lol from '../json1/lol.json';
-
-const AppContext = createContext();
 
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
@@ -11,6 +9,7 @@ const useWordle = (solution) => {
   const [history, setHistory] = useState([]);
   const [count, setCount] = useState(0);
   const [isCorrect, setisCorrect] = useState(false);
+  const [currentQuestionCounter, setCurrentQuestionCounter] = useState(1);
 
   const formatGuess = () => {
     let solutionsArray = [...solution];
@@ -69,6 +68,7 @@ const useWordle = (solution) => {
       }
       const format = formatGuess();
       addNewGuess(format);
+      // console.log(guesses);
     }
     if (key === 'Backspace') {
       setCurrentGuess((prev) => {
@@ -86,13 +86,16 @@ const useWordle = (solution) => {
     }
   };
 
-  // return (
-  //   <AppContext.Provider value={{ turn, currentGuess, guesses, isCorrect, handleKeyUp }}>
-
-  //   </AppContext.Provider>
-  // )
-
-  return { turn, currentGuess, guesses, isCorrect, handleKeyUp };
+  return {
+    turn,
+    currentGuess,
+    guesses,
+    isCorrect,
+    handleKeyUp,
+    setGuesses,
+    currentQuestionCounter,
+    setCurrentQuestionCounter,
+  };
 };
 
 export default useWordle;

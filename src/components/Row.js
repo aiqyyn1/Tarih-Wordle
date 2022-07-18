@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 export default function ({ solutionLength, guess, currentGuess, solution }) {
+  // console.log('currenguess', currentGuess, 'solution', solution);
   if (guess) {
     return (
       <div className='row past'>
@@ -8,9 +9,10 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
           <motion.div
             key={index}
             className={letter.color}
-            animate={{ rotate: 360 }}
-            transition={{ delay :0.2,duration: 0.8 }}
-            
+            animate={{
+              rotate: 360,
+            }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
             {letter.key}
           </motion.div>
@@ -18,6 +20,7 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
       </div>
     );
   }
+
   if (currentGuess) {
     let letters = currentGuess.split('');
 
@@ -25,11 +28,11 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
       <div className='row current'>
         {letters.map((letter, i) => (
           <div key={i} className='filled'>
-            {' '}
-            {letter}{' '}
+        {letter}
+
           </div>
         ))}
-        {[...Array(solutionLength - letters.length)].map((index) => (
+        {[...Array(solution.length- letters.length)].map((index) => (
           <div key={index}></div>
         ))}
       </div>
