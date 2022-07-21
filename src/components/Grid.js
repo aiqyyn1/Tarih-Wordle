@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Row from './Row';
-import useWordle from '../hooks/useWordle';
+
 export default function Grid({
   currentGuess,
+  setCurrentGuess,
   guesses,
+  setGuesses,
   turn,
+  setTurn,
   solutionLength,
   solution,
+  currentQuestion,
+  setShowModal,
+  setIsCorrect,
+  setShowModal2,
 }) {
-  // console.log('guesses', guesses);
-  // console.log('guesses', guesses);
+  useEffect(() => {
+    setGuesses([...Array(6)]);
+    setTurn(0);
+    setCurrentGuess('');
+    setShowModal(false);
+    setIsCorrect(false);
+    setShowModal2(false);
+  }, [currentQuestion]);
+
   return (
     <div>
       {guesses.map((guess, i) => {

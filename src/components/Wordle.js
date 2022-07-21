@@ -1,41 +1,48 @@
 import React from 'react';
 import useWordle from '../hooks/useWordle';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import Grid from './Grid';
 import { isGuessed } from '../utils';
 import Modal from './Modal';
+import Modal2 from './Modal2';
 
-export default function Wordle({ solution, questions }) {
-  const { currentGuess, handleKeyUp, guesses, isCorrect, turn, count } =
-    useWordle(solution);
-const[showModal, setShowModal]= useState(false);
+export default function Wordle({
+  solution,
+  questions,
+  handleGenerateNext,
+  currentQuestion,
+}) {
+  const {
+    handleKeyUp,
+    currentGuess,
+    setCurrentGuess,
+    guesses,
+    setGuesses,
+    turn,
+    setTurn,
+    setIsCorrect,
+    isCorrect,
+  } = useWordle(solution);
+  const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
   useEffect(() => {
-    console.log('congrats, you win');
     window.addEventListener('keyup', handleKeyUp);
     if (isCorrect) {
-      setTimeout(()=>setShowModal(true),2000)
+      setTimeout(() => setShowModal(true), 1000);
       window.removeEventListener('keyup', handleKeyUp);
     }
     if (turn > 5) {
-      console.log('unlucky, out of guesses');
-      setTimeout(()=>setShowModal(true),2000)
+      setTimeout(() => setShowModal2(true), 1000);
       window.removeEventListener('keyup', handleKeyUp);
     }
     return () => window.removeEventListener('keyup', handleKeyUp);
   }, [handleKeyUp, isCorrect, turn]);
 
-  // useEffect(() => {
-  //   // console.log(guesses, turn, isCorrect);
-  // }, [guesses, turn, isCorrect]);
-
-  // console.log('=>', isGuessed(guesses));
   return (
     <div>
       <div>solution is-{solution}</div>
-      {/* <div>current guesses - {currentGuess}</div> */}
-      <div>questions is-{questions}</div>
 
-      {/* <div>{isGuessed(guesses) && 'win'}</div> */}
+      <div>questions is-{questions}</div>
 
       <Grid
         currentGuess={currentGuess}
@@ -43,8 +50,31 @@ const[showModal, setShowModal]= useState(false);
         solutionLength={solution.length}
         turn={turn}
         solution={solution}
+        currentQuestion={currentQuestion}
+        setGuesses={setGuesses}
+        setTurn={setTurn}
+        setShowModal={setShowModal}
+        showModal={showModal}
+        setCurrentGuess={setCurrentGuess}
+        setIsCorrect={setIsCorrect}
+        setShowModal2={setShowModal2}
       />
-      { showModal && < Modal isCorrect={isCorrect} turn={turn} solution={solution}/>}
+      {showModal && isCorrect && (
+        <Modal
+          turn={turn}
+          solution={solution}
+          handleGenerateNext={handleGenerateNext}
+          showModal={showModal}
+        />
+      )}
+      {showModal2 && (
+        <Modal2
+          turn={turn}
+          solution={solution}
+          handleGenerateNext={handleGenerateNext}
+          showModal2={showModal2}
+        />
+      )}
     </div>
   );
 }

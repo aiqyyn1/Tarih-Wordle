@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+
 export default function ({ solutionLength, guess, currentGuess, solution }) {
-  // console.log('currenguess', currentGuess, 'solution', solution);
+  // console.log('solution ====>', solution);
   if (guess) {
     return (
       <div className='row past'>
@@ -23,16 +24,14 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
 
   if (currentGuess) {
     let letters = currentGuess.split('');
-
     return (
       <div className='row current'>
         {letters.map((letter, i) => (
           <div key={i} className='filled'>
-        {letter}
-
+            {letter}
           </div>
         ))}
-        {[...Array(solution.length- letters.length)].map((index) => (
+        {[...Array(solution.length - letters.length)].map((index) => (
           <div key={index}></div>
         ))}
       </div>

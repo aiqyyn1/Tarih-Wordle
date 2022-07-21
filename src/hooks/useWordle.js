@@ -8,8 +8,7 @@ const useWordle = (solution) => {
   const [guesses, setGuesses] = useState([...Array(6)]);
   const [history, setHistory] = useState([]);
   const [count, setCount] = useState(0);
-  const [isCorrect, setisCorrect] = useState(false);
-  const [currentQuestionCounter, setCurrentQuestionCounter] = useState(1);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   const formatGuess = () => {
     let solutionsArray = [...solution];
@@ -33,9 +32,10 @@ const useWordle = (solution) => {
 
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
-      setisCorrect(true);
+      setIsCorrect(true);
       setCount((count) => count + 1);
     }
+    // console.log('counter', count);
 
     setGuesses((prevGuesses) => {
       let newGuess = [...prevGuesses];
@@ -54,16 +54,16 @@ const useWordle = (solution) => {
   const handleKeyUp = ({ key }) => {
     if (key === 'Enter') {
       if (turn > 5) {
-        alert('болды брат попыткаларын бытты ');
+        alert('your attempt is over');
         return;
       }
       if (history.includes(currentGuess)) {
-        alert('брат жаздын го уже ондай созды');
+        alert('Бирдей болды');
         return;
       }
 
       if (currentGuess.length !== solution.length) {
-        alert('бля брат дурыстап жазсай');
+        alert('not enough arip');
         return;
       }
       const format = formatGuess();
@@ -88,13 +88,14 @@ const useWordle = (solution) => {
 
   return {
     turn,
+    setTurn,
     currentGuess,
+    setCurrentGuess,
     guesses,
     isCorrect,
+    setIsCorrect,
     handleKeyUp,
     setGuesses,
-    currentQuestionCounter,
-    setCurrentQuestionCounter,
   };
 };
 
