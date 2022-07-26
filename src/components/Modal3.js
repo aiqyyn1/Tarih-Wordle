@@ -17,11 +17,8 @@ export default function Modal({
   return (
     <div className='modal'>
       <div>
-        <h1>You Earn 1 point !</h1>
+        <h1>Game is over</h1>
         <h2> Your score is {countRightAnswer}</h2>
-        <p className='solution'>{solution}</p>
-        <button onClick={handleGenerateNext}>next</button>
-        <p> You find the solution in {turn} guesses </p>
       </div>
     </div>
   );

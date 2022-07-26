@@ -2,7 +2,7 @@ import React from 'react';
 import useWordle from '../hooks/useWordle';
 import { useEffect, useState, createContext } from 'react';
 import Grid from './Grid';
-import { isGuessed } from '../utils';
+
 import Modal from './Modal';
 import Modal2 from './Modal2';
 
@@ -11,6 +11,7 @@ export default function Wordle({
   questions,
   handleGenerateNext,
   currentQuestion,
+  tenQuestions,
 }) {
   const {
     handleKeyUp,
@@ -20,29 +21,35 @@ export default function Wordle({
     setGuesses,
     turn,
     setTurn,
+    setCountRightAnswer,
+    countRightAnswer,
     setIsCorrect,
     isCorrect,
+    setHistory,
   } = useWordle(solution);
+
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const [showEnd, setShowEnd] = useState(false);
   useEffect(() => {
     window.addEventListener('keyup', handleKeyUp);
     if (isCorrect) {
-      setTimeout(() => setShowModal(true), 1000);
+      setTimeout(() => setShowModal(true), 2000);
       window.removeEventListener('keyup', handleKeyUp);
     }
     if (turn > 5) {
-      setTimeout(() => setShowModal2(true), 1000);
+      setTimeout(() => setShowModal2(true), 2000);
       window.removeEventListener('keyup', handleKeyUp);
     }
     return () => window.removeEventListener('keyup', handleKeyUp);
-  }, [handleKeyUp, isCorrect, turn]);
+  }, [handleKeyUp, isCorrect, turn, currentQuestion]);
 
+  console.log('HERE', countRightAnswer);
   return (
     <div>
-      <div>solution is-{solution}</div>
+      {/* <div>solution is-{solution}</div> */}
 
-      <div>questions is-{questions}</div>
+      <div className='questions'>{questions}</div>
 
       <Grid
         currentGuess={currentGuess}
@@ -56,6 +63,7 @@ export default function Wordle({
         setShowModal={setShowModal}
         showModal={showModal}
         setCurrentGuess={setCurrentGuess}
+        setHistory={setHistory}
         setIsCorrect={setIsCorrect}
         setShowModal2={setShowModal2}
       />
@@ -63,6 +71,7 @@ export default function Wordle({
         <Modal
           turn={turn}
           solution={solution}
+          countRightAnswer={countRightAnswer}
           handleGenerateNext={handleGenerateNext}
           showModal={showModal}
         />

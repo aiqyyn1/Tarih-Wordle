@@ -7,7 +7,7 @@ const useWordle = (solution) => {
   const [currentGuess, setCurrentGuess] = useState('');
   const [guesses, setGuesses] = useState([...Array(6)]);
   const [history, setHistory] = useState([]);
-  const [count, setCount] = useState(0);
+  const [countRightAnswer, setCountRightAnswer] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
 
   const formatGuess = () => {
@@ -33,9 +33,8 @@ const useWordle = (solution) => {
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
       setIsCorrect(true);
-      setCount((count) => count + 1);
+      setCountRightAnswer((countRightAnswer) => countRightAnswer + 1);
     }
-    // console.log('counter', count);
 
     setGuesses((prevGuesses) => {
       let newGuess = [...prevGuesses];
@@ -77,7 +76,12 @@ const useWordle = (solution) => {
       return;
     }
 
-    if (key !== 'Enter' && key !== 'Shift') {
+    if (
+      key !== 'Enter' &&
+      key !== 'Shift' &&
+      key !== 'Space' &&
+      key != 'Meta'
+    ) {
       if (currentGuess.length < solution.length) {
         setCurrentGuess((prev) => {
           return prev + key;
@@ -95,7 +99,10 @@ const useWordle = (solution) => {
     isCorrect,
     setIsCorrect,
     handleKeyUp,
+    setCountRightAnswer,
+    countRightAnswer,
     setGuesses,
+    setHistory,
   };
 };
 

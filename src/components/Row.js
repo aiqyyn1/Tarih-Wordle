@@ -21,7 +21,6 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
       </div>
     );
   }
-
   if (currentGuess) {
     let letters = currentGuess.split('');
     return (
@@ -31,7 +30,7 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
             {letter}
           </div>
         ))}
-        {[...Array(solution.length - letters.length)].map((index) => (
+        {[...Array(solution.length - letters.length)].map((item, index) => (
           <div key={index}></div>
         ))}
       </div>
@@ -39,8 +38,8 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
   }
   return (
     <div className='row'>
-      {[...Array(solutionLength)].map((index) => (
-        <div key={index} сlassName='lox' />
+      {[...Array(solutionLength)].map((item, index) => (
+        <div key={index} />
       ))}
     </div>
   );

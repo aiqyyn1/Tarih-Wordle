@@ -14,6 +14,9 @@ export default function Grid({
   setShowModal,
   setIsCorrect,
   setShowModal2,
+  showModal2,
+  handleKeyUp,
+  setHistory,
 }) {
   useEffect(() => {
     setGuesses([...Array(6)]);
@@ -22,6 +25,7 @@ export default function Grid({
     setShowModal(false);
     setIsCorrect(false);
     setShowModal2(false);
+    setHistory([]);
   }, [currentQuestion]);
 
   return (
