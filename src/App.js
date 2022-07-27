@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import useWordle from './hooks/useWordle';
 import Wordle from './components/Wordle';
 import icon from './foto/icon.png';
@@ -11,9 +11,12 @@ import { generateRandomQuestions } from './utils';
 import Modal3 from './components/Modal3';
 
 const tenQuestions = generateRandomQuestions(lol.questions1);
+export const AppContext = createContext();
+
 
 const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [countRightAnswer, setCountRightAnswer] = useState(0);
   const [solution, setSolution] = useState(
     tenQuestions[currentQuestion]?.answer
   );
@@ -47,45 +50,32 @@ const App = () => {
       );
     }
   }, [currentQuestion]);
-
-  const {
-    turn,
-    setTurn,
-    currentGuess,
-    setCurrentGuess,
-    guesses,
-    isCorrect,
-    setIsCorrect,
-    handleKeyUp,
-    setCountRightAnswer,
-    countRightAnswer,
-    setGuesses,
-    setHistory,
-  } = useWordle();
-  console.log(countRightAnswer);
+  console.log('countRightAnswer', countRightAnswer);
   return (
-    <div className='App'>
-      <div className='wrapper'>
-        <img src={setting} alt='my image' className='buttonImage' />
+    <AppContext.Provider value={{ countRightAnswer, setCountRightAnswer }}>
+      <div className='App'>
+        <div className='wrapper'>
+          <img src={setting} alt='my image' className='buttonImage' />
 
-        <h1 className='title '> Тарих Ойыны</h1>
-        <img className='icon' src={icon}></img>
+          <h1 className='title '> Тарих Ойыны</h1>
+          <img className='icon' src={icon}></img>
+        </div>
+        <div className='low'></div>
+        <div id='lol'></div>
+
+        {tenQuestions[currentQuestion]?.questions ? (
+          <Wordle
+            solution={solution}
+            questions={questions}
+            handleGenerateNext={handleGenerateNext}
+            currentQuestion={currentQuestion}
+            tenQuestions={tenQuestions}
+          ></Wordle>
+        ) : (
+          <Modal3 countRightAnswer={countRightAnswer} tenQuestionsLength={tenQuestions.length}></Modal3>
+        )}
       </div>
-      <div className='low'></div>
-      <div id='lol'></div>
-
-      {tenQuestions[currentQuestion]?.questions ? (
-        <Wordle
-          solution={solution}
-          questions={questions}
-          handleGenerateNext={handleGenerateNext}
-          currentQuestion={currentQuestion}
-          tenQuestions={tenQuestions}
-        ></Wordle>
-      ) : (
-        <Modal3></Modal3>
-      )}
-    </div>
+    </AppContext.Provider>
   );
 };
 export default App;

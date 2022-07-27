@@ -44,7 +44,6 @@ export default function Wordle({
     return () => window.removeEventListener('keyup', handleKeyUp);
   }, [handleKeyUp, isCorrect, turn, currentQuestion]);
 
-  console.log('HERE', countRightAnswer);
   return (
     <div>
       {/* <div>solution is-{solution}</div> */}
@@ -76,9 +75,8 @@ export default function Wordle({
           showModal={showModal}
         />
       )}
-      {showModal2 && (
+      {showModal2 && turn>5 && (
         <Modal2
-          turn={turn}
           solution={solution}
           handleGenerateNext={handleGenerateNext}
           showModal2={showModal2}

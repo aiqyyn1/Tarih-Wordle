@@ -112,3 +112,12 @@ body {
   font-size: 23px;
   font-weight: bold;
 }
+.modal3 div {
+  max-width: 500px;
+  max-height: 500px;
+  background: #ffff;
+  padding: 40px;
+  border-radius: 10px;
+  margin: 10% auto;
+  box-shadow: 2px 2px 10px rgba(0, 0,dk 0, 3);
+}
