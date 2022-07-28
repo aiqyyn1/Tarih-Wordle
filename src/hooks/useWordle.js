@@ -24,7 +24,7 @@ const useWordle = (solution) => {
       }
     });
     formattedGuess.forEach((l, i) => {
-      if (solutionsArray.includes(l.key) && l.key !== 'green') {
+      if (solutionsArray.includes(l.key) && l.color !== 'green') {
         formattedGuess[i].color = 'yellow';
         solutionsArray[solutionsArray.indexOf(l.key)] = null;
       }
@@ -85,7 +85,7 @@ const useWordle = (solution) => {
       key != 'Meta' &&
       key != 'Control' &&
       key != 'Escape' &&
-      key!='Alt'
+      key != 'Alt'
     ) {
       if (currentGuess.length < solution.length) {
         setCurrentGuess((prev) => {

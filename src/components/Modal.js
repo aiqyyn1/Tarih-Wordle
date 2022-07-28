@@ -1,6 +1,6 @@
 import React from 'react';
 import Wordle from './Wordle';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Modal({
   isCorrect,
@@ -14,15 +14,28 @@ export default function Modal({
   showModal,
   countRightAnswer,
 }) {
+  const [value, setValue] = useState('');
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (buttonRef.current) buttonRef.current.focus();
+  }, [buttonRef]);
+
   return (
     <div className='modal'>
-      <div>
+      <form>
         <h1>You Earn 1 point !</h1>
         <h2> Your score is {countRightAnswer}</h2>
         <p className='solution'>{solution}</p>
-        <button onClick={handleGenerateNext}>next</button>
+        <button
+          ref={buttonRef}
+          onKeyDown={handleGenerateNext}
+          onClick={handleGenerateNext}
+        >
+          next
+        </button>
         <p> You find the solution in {turn} guesses </p>
-      </div>
+      </form>
     </div>
   );
 }

@@ -12,12 +12,22 @@ export default function Modal2({
   setShowModal2,
   showModal2,
 }) {
+  const [value, setValue] = useState('');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    handleGenerateNext();
+    e.preventDefault();
+  };
   return (
     <div className='modal'>
       <div>
         <h1>Nevermind !</h1>
         <p className='solution'>{solution}</p>
-        <button onClick={handleGenerateNext}>next</button>
+        <button onClick={handleSubmit}>next</button>
       </div>
     </div>
   );

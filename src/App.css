@@ -50,17 +50,14 @@ body {
 .green {
   background: #5ac85a;
   border-color: #5ac85a;
-  animation: flip 0.5s ease forwards;
 }
 .grey {
   background-color: #a1a1a1;
   border-color: #a1a1a1;
-  animation: 0.5s ease forwards;
 }
 .yellow {
   background: #e2cc68;
   border-color: #e2cc68;
-  animation: flip 0.5s ease forwards;
 }
 #next {
   display: flex;
@@ -119,5 +116,5 @@ body {
   padding: 40px;
   border-radius: 10px;
   margin: 10% auto;
-  box-shadow: 2px 2px 10px rgba(0, 0,dk 0, 3);
+  box-shadow: 2px 2px 10px rgba(0, 0, dk 0, 3);
 }

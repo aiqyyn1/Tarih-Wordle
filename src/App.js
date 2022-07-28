@@ -13,7 +13,6 @@ import Modal3 from './components/Modal3';
 const tenQuestions = generateRandomQuestions(lol.questions1);
 export const AppContext = createContext();
 
-
 const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [countRightAnswer, setCountRightAnswer] = useState(0);
@@ -50,12 +49,18 @@ const App = () => {
       );
     }
   }, [currentQuestion]);
+ console.log(tenQuestions);
   console.log('countRightAnswer', countRightAnswer);
   return (
     <AppContext.Provider value={{ countRightAnswer, setCountRightAnswer }}>
       <div className='App'>
         <div className='wrapper'>
-          <img src={setting} alt='my image' className='buttonImage' />
+          <img
+            src={setting}
+            alt='my image'
+            className='buttonImage'
+      
+          />
 
           <h1 className='title '> Тарих Ойыны</h1>
           <img className='icon' src={icon}></img>
@@ -72,7 +77,10 @@ const App = () => {
             tenQuestions={tenQuestions}
           ></Wordle>
         ) : (
-          <Modal3 countRightAnswer={countRightAnswer} tenQuestionsLength={tenQuestions.length}></Modal3>
+          <Modal3
+            countRightAnswer={countRightAnswer}
+            tenQuestionsLength={tenQuestions.length}
+          ></Modal3>
         )}
       </div>
     </AppContext.Provider>
