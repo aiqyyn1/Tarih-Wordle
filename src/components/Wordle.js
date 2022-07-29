@@ -5,6 +5,7 @@ import Grid from './Grid';
 
 import Modal from './Modal';
 import Modal2 from './Modal2';
+import Keyboard from '../Keyboard';
 
 export default function Wordle({
   solution,
@@ -12,6 +13,7 @@ export default function Wordle({
   handleGenerateNext,
   currentQuestion,
   tenQuestions,
+
 }) {
   const {
     handleKeyUp,
@@ -26,6 +28,7 @@ export default function Wordle({
     setIsCorrect,
     isCorrect,
     setHistory,
+    usedKeys
   } = useWordle(solution);
 
   const [showModal, setShowModal] = useState(false);
@@ -66,6 +69,7 @@ export default function Wordle({
         setIsCorrect={setIsCorrect}
         setShowModal2={setShowModal2}
       />
+      <Keyboard usedKeys={usedKeys}></Keyboard>
       {showModal && isCorrect && (
         <Modal
           turn={turn}
@@ -75,7 +79,7 @@ export default function Wordle({
           showModal={showModal}
         />
       )}
-      {showModal2 && turn>5 && (
+      {showModal2 && turn > 5 && (
         <Modal2
           solution={solution}
           handleGenerateNext={handleGenerateNext}
