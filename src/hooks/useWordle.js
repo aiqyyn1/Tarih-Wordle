@@ -9,7 +9,7 @@ const useWordle = (solution) => {
   const [currentGuess, setCurrentGuess] = useState('');
   const [guesses, setGuesses] = useState([...Array(6)]);
   const [history, setHistory] = useState([]);
-  const[usedKeys, setUsedKeys]=useState({} ) 
+  const [usedKeys, setUsedKeys] = useState({});
   const [isCorrect, setIsCorrect] = useState(false);
 
   const formatGuess = () => {
@@ -49,42 +49,44 @@ const useWordle = (solution) => {
     setTurn((prevTurn) => {
       return prevTurn + 1;
     });
-    setUsedKeys((prevusedKeys )=>{
-      let newKeys={...prevusedKeys}
-      formattedGuess.forEach((l)=>{
-         const currentColor=newKeys[l.key]
-         if (l.color ==='green'){
-newKeys[l.key]='green'
-return ;
-         }
-  if (l.color==='yellow' && currentColor!=='green'){
-newKeys[l.key]='yellow';
-return ;
-  }
-  if (l.color==='grey' && currentColor!=='green' && currentColor!=='yellow'){
-    newKeys[l.key]='grey';
-    return ;
-      }
-      })
+    setUsedKeys((prevusedKeys) => {
+      let newKeys = { ...prevusedKeys };
+      formattedGuess.forEach((l) => {
+        const currentColor = newKeys[l.key];
+        if (l.color === 'green') {
+          newKeys[l.key] = 'green';
+          return;
+        }
+        if (l.color === 'yellow' && currentColor !== 'green') {
+          newKeys[l.key] = 'yellow';
+          return;
+        }
+        if (
+          l.color === 'grey' &&
+          currentColor !== 'green' &&
+          currentColor !== 'yellow'
+        ) {
+          newKeys[l.key] = 'grey';
+          return;
+        }
+      });
       return newKeys;
-    })
-    
+    });
+
     setCurrentGuess('');
   };
 
   const handleKeyUp = ({ key }) => {
     if (key === 'Enter') {
       if (turn > 5) {
-        alert('your attempt is over');
         return;
       }
       if (history.includes(currentGuess)) {
-        alert('Бирдей болды');
         return;
       }
 
       if (currentGuess.length !== solution.length) {
-        alert('not enough arip');
+        console.log('not enough letters');
         return;
       }
       const format = formatGuess();
@@ -99,7 +101,6 @@ return ;
     }
 
     if (
-      key !== 'Enter' &&
       key !== 'Shift' &&
       key !== 'Space' &&
       key !== 'Meta' &&
@@ -128,7 +129,7 @@ return ;
     countRightAnswer,
     setGuesses,
     setHistory,
-    usedKeys
+    usedKeys,
   };
 };
 

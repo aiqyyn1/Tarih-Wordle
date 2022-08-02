@@ -1,6 +1,6 @@
 import React from 'react';
 import Wordle from './Wordle';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Modal2({
   turn,
@@ -11,23 +11,33 @@ export default function Modal2({
   handleGenerateNext,
   setShowModal2,
   showModal2,
+  handleKeydown,
 }) {
-  const [value, setValue] = useState('');
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeydown);
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, [handleKeydown]);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    handleGenerateNext();
-    e.preventDefault();
-  };
   return (
     <div className='modal'>
-      <div>
-        <h1>Nevermind !</h1>
-        <p className='solution'>{solution}</p>
-        <button onClick={handleSubmit}>next</button>
+      {/* <h1>Тағы бір рет көріңіз !</h1>
+        <p className='solution'>Жауабы: {solution}</p>
+        <button onClick={handleGenerateNext}>Келесі</button> */}
+      <div className='modal'>
+        <div className='wrapper'>
+          <div className='texts'>
+                <h1>Тағы бір рет көріңіз !</h1>
+            <h1 className='solution'>Жауабы: {solution}</h1>
+          </div>
+          <div className='button-wrapper'>
+            <button
+              // ref={buttonRef}
+              onClick={handleGenerateNext}
+            >
+              Келесі
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

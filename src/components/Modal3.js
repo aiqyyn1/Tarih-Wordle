@@ -9,7 +9,7 @@ export default function Modal({ countRightAnswer, tenQuestionsLength }) {
         <h1>Game is over</h1>
         <h2>
           {' '}
-          Your score is {tenQuestionsLength} out {countRightAnswer}
+          Your score is {countRightAnswer} out of {tenQuestionsLength}
         </h2>
       </div>
     </div>

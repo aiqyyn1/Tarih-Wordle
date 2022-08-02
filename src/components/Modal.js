@@ -10,32 +10,37 @@ export default function Modal({
   setSolution,
   tenQuestions,
   handleGenerateNext,
+  handleKeydown,
   setShowModal,
   showModal,
   countRightAnswer,
 }) {
-  const [value, setValue] = useState('');
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    if (buttonRef.current) buttonRef.current.focus();
-  }, [buttonRef]);
+    window.addEventListener('keydown', handleKeydown);
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, [handleKeydown]);
 
+  // console.log(buttonRef.current);
   return (
     <div className='modal'>
-      <form>
-        <h1>You Earn 1 point !</h1>
-        <h2> Your score is {countRightAnswer}</h2>
-        <p className='solution'>{solution}</p>
-        <button
-          ref={buttonRef}
-          onKeyDown={handleGenerateNext}
-          onClick={handleGenerateNext}
-        >
-          next
-        </button>
-        <p> You find the solution in {turn} guesses </p>
-      </form>
+      <div className='wrapper'>
+        <div className='texts'>
+          <h1 className='score'>Ұпай саны: {countRightAnswer}</h1>
+          <h1 className='solution'>Жауабы: {solution}</h1>
+
+          <p> Сіз {turn} әрекет ішінде таптыңыз </p>
+        </div>
+        <div className='button-wrapper'>
+          <button
+            // ref={buttonRef}
+            onClick={handleGenerateNext}
+          >
+            Келесі
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

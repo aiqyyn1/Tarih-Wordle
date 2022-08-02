@@ -1,7 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function ({ solutionLength, guess, currentGuess, solution }) {
+export default function ({
+  solutionLength,
+  guess,
+  guesses,
+  currentGuess,
+  solution,
+}) {
   // console.log('solution ====>', solution);
   if (guess) {
     return (
@@ -39,7 +45,7 @@ export default function ({ solutionLength, guess, currentGuess, solution }) {
   return (
     <div className='row'>
       {[...Array(solutionLength)].map((item, index) => (
-        <div key={index} />
+        <div key={index} className='row'></div>
       ))}
     </div>
   );

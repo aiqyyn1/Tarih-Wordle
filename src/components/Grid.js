@@ -27,7 +27,6 @@ export default function Grid({
     setShowModal2(false);
     setHistory([]);
   }, [currentQuestion]);
-
   return (
     <div>
       {guesses.map((guess, i) => {
@@ -35,6 +34,7 @@ export default function Grid({
           return (
             <Row
               key={i}
+              guess={guess}
               currentGuess={currentGuess}
               solutionLength={solutionLength}
               solution={solution}

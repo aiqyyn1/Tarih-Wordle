@@ -11,9 +11,9 @@ export default function Wordle({
   solution,
   questions,
   handleGenerateNext,
+  handleKeydown,
   currentQuestion,
   tenQuestions,
-
 }) {
   const {
     handleKeyUp,
@@ -28,12 +28,12 @@ export default function Wordle({
     setIsCorrect,
     isCorrect,
     setHistory,
-    usedKeys
+    usedKeys,
   } = useWordle(solution);
 
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
-  const [showEnd, setShowEnd] = useState(false);
+
   useEffect(() => {
     window.addEventListener('keyup', handleKeyUp);
     if (isCorrect) {
@@ -47,11 +47,15 @@ export default function Wordle({
     return () => window.removeEventListener('keyup', handleKeyUp);
   }, [handleKeyUp, isCorrect, turn, currentQuestion]);
 
+  // const handleAddWordToGrid = (letter) => {
+  //   setCurrentGuess((prev) => prev + letter);
+  // };
+
   return (
     <div>
       {/* <div>solution is-{solution}</div> */}
 
-      <div className='questions'>{questions}</div>
+      <div className=' questions'>{questions}</div>
 
       <Grid
         currentGuess={currentGuess}
@@ -69,13 +73,21 @@ export default function Wordle({
         setIsCorrect={setIsCorrect}
         setShowModal2={setShowModal2}
       />
-      <Keyboard usedKeys={usedKeys}></Keyboard>
+
+      {/* <Keyboard
+        solution={solution}
+        usedKeys={usedKeys}
+        handleAddWordToGrid={handleAddWordToGrid}
+        handleKeyUp={handleKeyUp}
+      ></Keyboard> */}
+
       {showModal && isCorrect && (
         <Modal
           turn={turn}
           solution={solution}
           countRightAnswer={countRightAnswer}
           handleGenerateNext={handleGenerateNext}
+          handleKeydown={handleKeydown}
           showModal={showModal}
         />
       )}
@@ -83,6 +95,7 @@ export default function Wordle({
         <Modal2
           solution={solution}
           handleGenerateNext={handleGenerateNext}
+          handleKeydown={handleKeydown}
           showModal2={showModal2}
         />
       )}
