@@ -31,7 +31,7 @@ const App = () => {
   };
 
   const handleKeydown = (event) => {
-    console.log(event);
+
     if (event.key === 'Enter') {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     }

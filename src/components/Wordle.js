@@ -29,8 +29,9 @@ export default function Wordle({
     isCorrect,
     setHistory,
     usedKeys,
+    history,
   } = useWordle(solution);
-
+  console.log(currentGuess);
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
 
@@ -47,14 +48,14 @@ export default function Wordle({
     return () => window.removeEventListener('keyup', handleKeyUp);
   }, [handleKeyUp, isCorrect, turn, currentQuestion]);
 
-  // const handleAddWordToGrid = (letter) => {
-  //   setCurrentGuess((prev) => prev + letter);
-  // };
+  const handleAddWordToGrid = (letter) => {
+    if (currentGuess.length < solution.length) {
+      setCurrentGuess((prev) => prev + letter);
+    }
+  };
 
   return (
     <div>
-      {/* <div>solution is-{solution}</div> */}
-
       <div className=' questions'>{questions}</div>
 
       <Grid
@@ -74,12 +75,15 @@ export default function Wordle({
         setShowModal2={setShowModal2}
       />
 
-      {/* <Keyboard
+      <Keyboard
         solution={solution}
         usedKeys={usedKeys}
         handleAddWordToGrid={handleAddWordToGrid}
         handleKeyUp={handleKeyUp}
-      ></Keyboard> */}
+        turn={turn}
+        history={history}
+        curretGuess={currentGuess}
+      ></Keyboard>
 
       {showModal && isCorrect && (
         <Modal
