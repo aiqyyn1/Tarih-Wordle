@@ -30,6 +30,7 @@ const useWordle = (solution) => {
       }
     });
     return formattedGuess;
+
   };
 
   const addNewGuess = (formattedGuess) => {
