@@ -65,7 +65,7 @@ export default function Wordle({
       addNewGuess(format);
       // console.log(guesses);
     }
-    if (letter === 'Back') {
+    if (letter === 'BackSpace') {
       setCurrentGuess((prev) => {
         return prev.slice(0, -1);
       });
