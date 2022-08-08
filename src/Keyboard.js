@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import lol from './json1/lol.json';
+import lol from './components/lol.json';
 import useWordle from './hooks/useWordle';
 export default function Keyboard({
   handleAddWordToGrid,

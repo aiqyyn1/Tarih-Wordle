@@ -6,6 +6,7 @@ import Grid from './Grid';
 import Modal from './Modal';
 import Modal2 from './Modal2';
 import Keyboard from '../Keyboard';
+import json from './lol.json';
 
 export default function Wordle({
   solution,
@@ -14,6 +15,7 @@ export default function Wordle({
   handleKeydown,
   currentQuestion,
   tenQuestions,
+  setCurrentQuestion,
 }) {
   const {
     handleKeyUp,
@@ -26,6 +28,8 @@ export default function Wordle({
     setCountRightAnswer,
     countRightAnswer,
     setIsCorrect,
+    formatGuess,
+    addNewGuess,
     isCorrect,
     setHistory,
     usedKeys,
@@ -49,8 +53,29 @@ export default function Wordle({
   }, [handleKeyUp, isCorrect, turn, currentQuestion]);
 
   const handleAddWordToGrid = (letter) => {
+    if (letter === 'Enter') {
+      if (turn > 5) {
+        return;
+      }
+      if (currentGuess.length !== solution.length) {
+        console.log('not enough letters');
+        return;
+      }
+      const format = formatGuess();
+      addNewGuess(format);
+      // console.log(guesses);
+    }
+    if (letter === 'Backspace') {
+      setCurrentGuess((prev) => {
+        return prev.slice(0, -1);
+      });
+      return;
+    }
+
     if (currentGuess.length < solution.length) {
-      setCurrentGuess((prev) => prev + letter);
+      setCurrentGuess((prev) => {
+        return prev + letter;
+      });
     }
   };
 

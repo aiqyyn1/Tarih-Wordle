@@ -3,7 +3,7 @@ import useWordle from './hooks/useWordle';
 import Wordle from './components/Wordle';
 import icon from './foto/icon.png';
 import setting from './foto/setting.jpeg';
-import lol from './json1/lol.json';
+import lol from './components/lol.json';
 import './App.css';
 import { generateRandomQuestions } from './utils';
 import Modal3 from './components/Modal3';
@@ -31,7 +31,6 @@ const App = () => {
   };
 
   const handleKeydown = (event) => {
-
     if (event.key === 'Enter') {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     }
@@ -90,6 +89,7 @@ const App = () => {
             handleKeydown={handleKeydown}
             currentQuestion={currentQuestion}
             tenQuestions={tenQuestions}
+            setCurrentQuestion={setCurrentQuestion}
           ></Wordle>
         ) : (
           <Modal3
