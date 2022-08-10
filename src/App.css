@@ -239,6 +239,7 @@ body {
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   .digitgroup {
+    width: 390px;
   }
 }
 .keypad {
@@ -249,10 +250,13 @@ body {
   margin-block: 45px;
 }
 .digits {
-  font-size: 20px;
+  font-size: 15px;
   margin: 2px;
+  border-radius: 6px;
+  line-height: 30px;
   color: #121213;
 }
 .digitgroup {
   display: flex;
+  justify-content: center;
 }
