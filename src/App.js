@@ -66,16 +66,7 @@ const App = () => {
   return (
     <AppContext.Provider value={{ countRightAnswer, setCountRightAnswer }}>
       <div className='App'>
-        <header className='wrapper'>
-          <button onClick={handleShowRules}>
-            {showRules && (
-              <ModalRules
-                countRightAnswer={countRightAnswer}
-                tenQuestionsLength={tenQuestions.length}
-              ></ModalRules>
-            )}
-          </button>
-        </header>
+        <header className='wrapper'></header>
         <h1 className='title '> KAZWORDLE</h1>
 
         <div className='low'></div>
