@@ -258,5 +258,5 @@ body {
 }
 .digitgroup {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
