@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AppContext } from '../App';
-import Wordle from '../components/Wordle';
-import lol from '../components/lol.json';
+
+
 
 const useWordle = (solution) => {
   const { countRightAnswer, setCountRightAnswer } = useContext(AppContext);

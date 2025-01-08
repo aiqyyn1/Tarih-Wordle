@@ -6,7 +6,7 @@ import Grid from './Grid';
 import Modal from './Modal';
 import Modal2 from './Modal2';
 import Keyboard from '../Keyboard';
-import json from './lol.json';
+import json from '../data.json';
 
 export default function Wordle({
   solution,

@@ -1,16 +1,11 @@
 import { useState, useEffect, createContext } from 'react';
-import useWordle from './hooks/useWordle';
+
 import Wordle from './components/Wordle';
-import icon from './foto/icon.png';
-import setting from './foto/setting.jpeg';
-import lol from './components/lol.json';
+
+import lol from './data.json';
 import './App.css';
 import { generateRandomQuestions } from './utils';
 import Modal3 from './components/Modal3';
-import Modal from './components/Modal';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import ModalRules from './components/ModalRules';
 
 const tenQuestions = generateRandomQuestions(lol.questions1);
 export const AppContext = createContext();
@@ -20,12 +15,8 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [countRightAnswer, setCountRightAnswer] = useState(0);
   const [showRules, setShowRules] = useState(false);
-  const [solution, setSolution] = useState(
-    tenQuestions[currentQuestion]?.answer
-  );
-  const [questions, setQuestions] = useState(
-    tenQuestions[currentQuestion]?.questions
-  );
+  const [solution, setSolution] = useState(tenQuestions[currentQuestion]?.answer);
+  const [questions, setQuestions] = useState(tenQuestions[currentQuestion]?.questions);
   const handleGenerateNext = () => {
     setCurrentQuestion((prevQuestion) => prevQuestion + 1);
   };
@@ -45,14 +36,14 @@ const App = () => {
     ) {
       setSolution(
         tenQuestions[currentQuestion]?.answer || (
-          <div className='game'>
+          <div className="game">
             <h1>Game is over</h1>
           </div>
         )
       );
       setQuestions(
         tenQuestions[currentQuestion]?.questions || (
-          <div className='game'>
+          <div className="game">
             <h1>Game is over</h1>
           </div>
         )
@@ -65,12 +56,12 @@ const App = () => {
   console.log('countRightAnswer', countRightAnswer);
   return (
     <AppContext.Provider value={{ countRightAnswer, setCountRightAnswer }}>
-      <div className='App'>
-        <header className='wrapper'></header>
-        <h1 className='title '> KAZWORDLE</h1>
+      <div className="App">
+        <header className="wrapper"></header>
+        <h1 className="title "> KAZWORDLE</h1>
 
-        <div className='low'></div>
-        <div id='lol'></div>
+        <div className="low"></div>
+        <div id="lol"></div>
 
         {tenQuestions[currentQuestion]?.questions ? (
           <Wordle
