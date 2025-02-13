@@ -7,8 +7,7 @@ Kazakh History Wordle is an engaging and educational word puzzle game that chall
 - Daily word challenges based on Kazakh history.
 - Hints and clues for tricky words.
 - User-friendly and interactive UI.
-- Supports Kazakh and English languages.
-- Score tracking and leaderboard system.
+
 
 ## 📜 How to Play
 1. The game selects a historical word related to Kazakhstan.
@@ -27,11 +26,11 @@ Visit the official game website: [Your Website URL]
 ### Local Setup
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/kazakh-history-wordle.git
+   git clone https://github.com/aiqyyn1/Tarih-Wordle.git
    ```
 2. Navigate to the project folder:
    ```sh
-   cd kazakh-history-wordle
+   cd Tarih-Wordle
    ```
 3. Install dependencies:
    ```sh
@@ -46,11 +45,6 @@ Visit the official game website: [Your Website URL]
 ## 🤝 Contributing
 Feel free to contribute by submitting pull requests or reporting issues. Let's make this game even better together!
 
-## 📜 License
-This project is licensed under the MIT License.
-
-## 📞 Contact
-For any inquiries, suggestions, or feedback, reach out to me at [your email] or visit [your website/socials].
 
 Enjoy the game and expand your knowledge of Kazakh history! 🎉
 
