@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+Kazakh History Wordle Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🎮 About the Game
 
-## Available Scripts
+Kazakh History Wordle is an engaging and educational word puzzle game that challenges players to guess words related to Kazakh history. Inspired by the popular game Wordle, this game aims to test and expand your knowledge of Kazakhstan's rich historical heritage.
 
-In the project directory, you can run:
+🛠 Features
 
-### `npm start`
+Daily word challenges based on Kazakh history.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Hints and clues for tricky words.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+User-friendly and interactive UI.
 
-### `npm test`
+Supports Kazakh and English languages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Score tracking and leaderboard system.
 
-### `npm run build`
+📜 How to Play
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The game selects a historical word related to Kazakhstan.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Players have a limited number of attempts to guess the word.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Each guess must be a valid word related to Kazakh history.
 
-### `npm run eject`
+After each guess, the game provides feedback:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+✅ Correct letters in the right position are highlighted.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🔄 Correct letters in the wrong position are indicated.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+❌ Incorrect letters are marked.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Keep guessing until you solve the word or run out of attempts!
 
-## Learn More
+💻 Installation & Running the Game
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Online Version
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Visit the official game website: [Your Website URL]
 
-### Code Splitting
+Local Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Clone this repository:
 
-### Analyzing the Bundle Size
+git clone https://github.com/yourusername/kazakh-history-wordle.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Navigate to the project folder:
 
-### Making a Progressive Web App
+cd kazakh-history-wordle
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Install dependencies:
 
-### Advanced Configuration
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Start the game:
 
-### Deployment
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Open your browser and play at http://localhost:3000.
 
-### `npm run build` fails to minify
+🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to contribute by submitting pull requests or reporting issues. Let's make this game even better together!
